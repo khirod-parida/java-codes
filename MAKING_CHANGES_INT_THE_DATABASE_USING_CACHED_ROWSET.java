@@ -1,0 +1,57 @@
+
+import java.sql.*;
+import oracle.jdbc.rowset.OracleCachedRowSet;
+
+class MAKING_CHANGES_IN_THE_DATABASE_USING_CACHED_ROWSET 
+{
+	public static void main(String[] args) 
+	{
+		try(oracle.jdbc.rowset.OracleCachedRowSet c=new oracle.jdbc.rowset.OracleCachedRowSet())
+		{
+			c.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+			c.setUsername("MANAGER");
+			c.setPassword("SYSTEM");
+			
+
+			c.setCommand("SELECT SNO,SNAME,SADD,SAVG FROM STUDENT");
+			
+			
+			
+         
+			c.setMaxRows(3);
+
+			c.execute();
+
+           c.acceptChanges();
+
+			while (c.next())
+			{
+				System.out.println(c.getString(1)+"  "+c.getString(2)+"  "+c.getString(3)+"  "  +c.getString(4));
+			}
+
+           c.absolute(3);
+
+			System.out.println(c.getString(1)+"  "+c.getString(2)+"  "+c.getString(3)+"  "+c.getString(4));
+
+			c.updateString(3,"HONG-KONG");
+			
+			System.out.println(c.getString(1)+"  "+c.getString(2)+ "  "+c.getString(3)+"  "+c.getString(4));
+
+			
+
+	         c.absolute(3);
+
+			System.out.println(c.getString(1)+"  "+c.getString(2)+"  "+c.getString(3)+"  "+c.getString(4));
+
+
+			
+		}
+		catch (SQLException se)
+		{
+			se.printStackTrace();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+}
