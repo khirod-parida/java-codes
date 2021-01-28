@@ -1,0 +1,61 @@
+<script  language="JavaScript">
+function validate(frm){
+
+	let name=frm.name.value;
+	let num=frm.no.value;
+
+	flag=true;
+
+	if(name=""){
+alert("employee name must be given");
+frm.name.focus();
+flag=false;
+		}
+
+	if(num=""){
+alert("employee must be given");
+frm.no.focus();
+flag=false;
+		}
+	else if(isNaN(num)){
+alert("employee number must be a numeric type");
+frm.no.focus();
+flag=false;
+		}
+	return flag;
+}
+
+
+</script>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="testurl" method="POST" onsubmit="validate this">
+<table border="2" bgcolor="grey" align="center">
+
+<tr>
+<td>Employee Name:</td>
+<td><input type="text" name="name"></td>
+</tr>
+
+<tr>
+<td>Employee Number:</td>
+<td><input type="text" name="no"></td>
+</tr>
+
+<tr>
+<td>
+<input type="submit" value="submit">
+<input type="reset" value="reset">
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html>

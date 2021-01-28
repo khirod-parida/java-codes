@@ -32,7 +32,7 @@ class MAKING_CHANGES_IN_THE_DATABASE_USING_CACHED_ROWSET
           
 
 			c.updateString(3,"HONG-KONG");
-	
+			c.updateRow();
 			
 			System.out.println(c.getString(1)+"  "+c.getString(2)+ "  "+c.getString(3)+"  "+c.getString(4));
 
